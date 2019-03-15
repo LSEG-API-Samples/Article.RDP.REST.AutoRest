@@ -1,0 +1,13 @@
+{
+  "name": "auto-rest-swagger-mod",
+  "version": "0.0.0",
+  "description": "AutoRestSwaggerMod",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.5"
+  }
+}
