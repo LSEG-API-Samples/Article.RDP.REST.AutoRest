@@ -52,9 +52,11 @@ function capitalizeFirstLetter(string) {
 }
 
 function addHost(jsonObject) {
+    console.log("Set host to " + host);
     jsonObject.host = host;
 }
 function addSchemes(jsonObject) {
+    console.log("Set schemes to " + schemes);
     jsonObject.schemes = schemes;
 }
 function addOperationId(jsonObject) {
@@ -82,8 +84,10 @@ function addOperationId(jsonObject) {
         for (var verb in verbMap) {
           
             if (jsonPath[exKey][verb]) {
-                if (!jsonPath[exKey][verb].operationId)
+                if (!jsonPath[exKey][verb].operationId) {
+                    console.log("Set operationId: " + verbMap[verb] + funcName + " for " + verb + " of "+exKey);
                     jsonPath[exKey][verb].operationId = verbMap[verb] + funcName;
+                }
             }
         }
 
@@ -105,7 +109,7 @@ const valid =
         options.output        
     )
 
-console.log('Your options are', valid ? 'valid' : 'invalid')
+
 if (valid) {
     var content = fs.readFileSync(options.input);
     var jsonContent = JSON.parse(content);
@@ -128,7 +132,7 @@ if (valid) {
     console.log(usage)
 }
 
-console.log('Press any key to exit');
+
 
 process.stdin.setRawMode(true);
 process.stdin.resume();
