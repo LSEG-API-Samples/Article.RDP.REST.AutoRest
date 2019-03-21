@@ -1,7 +1,7 @@
 # How to use AutoRest with EDP
 
 ## EDP Overview
-Elektron Data Platform (EDP) is our cloud enabled, open platform, that brings together content, analytics and proprietary, customer and third-party data distribution and management technology. It provides simple web-based API access to a broad range of content. Therefore, any programming languages which support web-based API can connect and consume data from EDP.
+Elektron Data Platform (EDP) is our cloud-enabled, open platform, that brings together content, analytics and proprietary, customer and third-party data distribution and management technology. It provides simple web-based API access to a broad range of content. Therefore, any programming languages which support web-based API can connect and consume data from EDP.
 
 EDP provides online documents which list all available APIs and demonstrates how to use those APIs. Moreover, developers can also download a swagger file for each API. With this file, we can use tools such as AutoRest, or NSwagStudio to generate client libraries for accessing RESTful web services.
 
@@ -95,17 +95,17 @@ The AutoRest's options used in this section are:
 
 |Option|Description|
 |------|-----------|
-|--input-file=FILENAME|Adds the given file to the list of input files for generation process|
+|--input-file=FILENAME|Adds the given file to the list of input files for generating process|
 |--output-folder=DIRECTORY|The location for generated files. If not specified, uses ./Generated as the default|
 |--namespace=NAMESPACE|sets the namespace to use for the generated code|
 |--package-name=PACKAGENAME|Name of the package (Ruby, Python)|
 |--csharp|Runs the C# code generator|
-|--java|Runs the java code generator|
+|--java|Runs the Java code generator|
 |--python|Runs the python code generator|
 
 ### C#
 
-Run the following command with the modified JSON file to generate C# client library.
+Run the following command with the modified JSON file to generate a C# client library.
 
 ```
 autorest --input-file=auth_oauth2_mod.json --csharp --output-folder=CSharp --namespace=edp.auth 
@@ -117,7 +117,7 @@ The class diagram for the generated classes is shown below.
 
 ![CSharp](CSharpClass.jpg)
 
-The main class is **EDSAuthentication** which provides several methods to access EDP services. Developers can call methods with the **WithHttpMessagesAsync** suffix to get the low level **HttpOperationResponse** object containing the HTTP response body and response headers. Otherwise, the extension methods, such as **GetAuthorize**, **PostRevoke**, and **PostToken**, can be used to get the object level response. The model classes are also generated for the response (**Tokenresponse**) and error (**Error**).
+The main class is **EDSAuthentication** which provides several methods to access EDP services. Developers can call methods with the **WithHttpMessagesAsync** suffix to get the low-level **HttpOperationResponse** object containing the HTTP response body and response headers. Otherwise, the extension methods, such as **GetAuthorize**, **PostRevoke**, and **PostToken**, can be used to get the object level response. The model classes are also generated for the response (**Tokenresponse**) and error (**Error**).
 
 The generated C# classes depend on **Microsoft.Rest.ClientRuntime** and **Newtonsoft.Json** so those libraries must be installed in the project. 
 
@@ -157,7 +157,7 @@ The above code calls the extension method (**PostToken**) with a username and pa
 
 ### Java
 
-Run the following command with the modified JSON file to generate Java client library.
+Run the following command with the modified JSON file to generate a Java client library.
 
 ```
 autorest --input-file=auth_oauth2_mod.json --java --output-folder=Java --namespace=edp.auth 
@@ -266,7 +266,7 @@ After modifying the code, we can use the **EDSAuthenticationImpl** class to perf
         }             
     }
 ```
-The above code calls the **postToken** method with username and password to get a token. Then, the returned object is casted to the **Tokenresponse** or **Error** object according to its type.
+The above code calls the **postToken** method with a username and password to get a token. Then, the returned object is casted to the **Tokenresponse** or **Error** object according to its type.
 
 ### Python
 
@@ -276,7 +276,7 @@ Run the following command with the modified JSON file to generate Python client 
 autorest --input-file=auth_oauth2_mod.json --python --output-folder=Python --namespace=edp.auth --package-name=edp.auth
 ```
 
-The above uses the **auth_oauth2_mod.json** file to generate the Python class library in the **Python** folder. The namespace and package name of the classes is **edp.auth**.
+The above uses the **auth_oauth2_mod.json** file to generate the Python class library in the **Python** folder. The namespace and package name of the classes are **edp.auth**.
 
 The class diagram for the generated classes is shown below.
 
@@ -309,7 +309,7 @@ if hasattr(resp, 'access_token'):
 elif hasattr(resp, 'error_description'):
     print(resp.error_description)
 ```
-The above code calls the **post_token **method with username and password to get a token. Then, it uses the **hasattr()** method to verify the presence of the **access_token** or **error_description** of the returned object.
+The above code calls the **post_token** method with a username and password to get a token. Then, it uses the **hasattr()** method to verify the presence of the **access_token** or **error_description** of the returned object.
 
 ## Troubleshoot
 
@@ -337,7 +337,7 @@ The above code calls the **post_token **method with username and password to get
 ## Summary
 This article introduces how to use AutoRest to generate client libraries for Elektron Data Platform services. Using AutoRest can save developers time; Developers don't need to implement its own classes to consume REST services from Elektron Data Platform. 
 
-The steps are summarized here. First, download the swagger JSON file from the Eletron Data Platform's website. Then, run the node.js script with the downloaded file to create a new JSON file with the **operationId** fields. AutoRest uses the **operationId** fields as method names for generated classes. After that, run the AutoRest command with the modified JSON file to generate the client library. Next, install dependencies for the client library. Then, construct a class, and call an appropriate method. Finally, a returned object may need to be casted according to its type.
+The steps are summarized here. First, download the swagger JSON file from the Elektron Data Platform's website. Then, run the node.js script with the downloaded file to create a new JSON file with the **operationId** fields. AutoRest uses the **operationId** fields as method names for generated classes. After that, run the AutoRest command with the modified JSON file to generate the client library. Next, install dependencies for the client library. Then, construct a class, and call an appropriate method. Finally, a returned object may need to be casted according to its type.
 
 
 
