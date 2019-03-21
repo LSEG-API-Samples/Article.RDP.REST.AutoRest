@@ -1,3 +1,7 @@
+# Script to add operationId fields to the swagger JSON file
+
+For fulll document, please refer to [How to use AutoRest with EDP](doc/README.MD).
+
 AutoRest supports both swagger JSON and YAML files and the EDP website can provide swagger files in JSON format. However, if you use this JSON file with AutoRest, it will show the following errors.
 
 ```
