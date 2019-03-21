@@ -101,7 +101,7 @@ The AutoRest's options used in this section are:
 |--package-name=PACKAGENAME|Name of the package (Ruby, Python)|
 |--csharp|Runs the C# code generator|
 |--java|Runs the java code generator|
-|--pythonฅRuns the python code generator|
+|--python|Runs the python code generator|
 
 ### C#
 
