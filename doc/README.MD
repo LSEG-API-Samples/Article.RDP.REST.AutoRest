@@ -15,7 +15,7 @@ AutoRest is an OpenAPI (Swagger) specification code generator. It is an open sou
 AutoRest is a Node.js console application. To install AutoRest, please refer to the [AutoRest website](https://github.com/Azure/autorest). 
 
 ## OperationId
-AutoRest supports both swagger JSON and YAML files and the EDP website can provide swagger files in JSON format. However, if you use this JSON file with AutoRest, it will show the following errors.
+AutoRest supports both swagger JSON and YAML files and the EDP website can provide swagger files in JSON format. However, if you use these JSON files with AutoRest, it may show the following errors.
 
 ```
 FATAL: OperationId is required for all operations. Please add it for 'get' operation of '/authorize' path.
@@ -111,7 +111,7 @@ Run the following command with the modified JSON file to generate a C# client li
 autorest --input-file=auth_oauth2_mod.json --csharp --output-folder=CSharp --namespace=edp.auth 
 ```
 
-The above uses the **auth_oauth2_mod.json** file to generate the C# class library in the **CSharp** folder. The namespace of the classes is **edp.auth**.
+The above command uses the **auth_oauth2_mod.json** file to generate the C# class library in the **CSharp** folder. The namespace of the classes is **edp.auth**.
 
 The class diagram for the generated classes is shown below.
 
@@ -163,7 +163,7 @@ Run the following command with the modified JSON file to generate a Java client 
 autorest --input-file=auth_oauth2_mod.json --java --output-folder=Java --namespace=edp.auth 
 ```
 
-The above uses the **auth_oauth2_mod.json** file to generate the Java class library in the **Java** folder. The namespace of the classes is **edp.auth**.
+The above command uses the **auth_oauth2_mod.json** file to generate the Java class library in the **Java** folder. The namespace of the classes is **edp.auth**.
 
 The class diagram for the generated classes is shown below.
 
@@ -276,7 +276,7 @@ Run the following command with the modified JSON file to generate Python client 
 autorest --input-file=auth_oauth2_mod.json --python --output-folder=Python --namespace=edp.auth --package-name=edp.auth
 ```
 
-The above uses the **auth_oauth2_mod.json** file to generate the Python class library in the **Python** folder. The namespace and package name of the classes are **edp.auth**.
+The above command uses the **auth_oauth2_mod.json** file to generate the Python class library in the **Python** folder. The namespace and package name of the classes are **edp.auth**.
 
 The class diagram for the generated classes is shown below.
 
@@ -311,7 +311,7 @@ elif hasattr(resp, 'error_description'):
 ```
 The above code calls the **post_token** method with a username and password to get a token. Then, it uses the **hasattr()** method to verify the presence of the **access_token** or **error_description** of the returned object.
 
-## Troubleshoot
+## Troubleshooting
 
 1) Get this error **"AutoRest.Core.Logging.CodeGenerationException: OperationId is required for all operations."** when running AutoRest
   
