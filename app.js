@@ -132,11 +132,3 @@ if (valid) {
     console.log(usage)
 }
 
-
-
-process.stdin.setRawMode(true);
-process.stdin.resume();
-process.stdin.on('data', process.exit.bind(process, 0));
-//console.log("\n *START* \n");
-//var content = fs.readFileSync("alerts_v1.json");
-
