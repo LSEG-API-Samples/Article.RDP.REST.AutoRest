@@ -75,7 +75,7 @@ This section explains how to use the modified JSON file from the previous step w
 
 The examples use the swagger **/auth/oauth2/beta1** JSON file downloaded from the Elektron Data Platform's website. 
 
-1) Go to [https://api.refinitiv.com/](https://api.refinitiv.com/) to find the **/auth/oauth2/beta1** service. Then, select the **token** path
+1) Go to [https://api.refinitiv.com/](https://api.refinitiv.com/) and find the **/auth/oauth2/beta1** service. Then, select the **token** path
 
 ![oauth2](edp1.jpg)
 
