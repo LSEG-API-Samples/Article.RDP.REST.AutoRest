@@ -33,9 +33,14 @@ AutoRest uses operationId to determine the method name for a given API but the s
                 "summary": "Used to get a token for implicit grant.",
 ...
 ```
-In the above text, the **operationId** of the get operation of the **/authorize** path is **GetAuthorize**. Instead of manually adding the operationId field, we have implemented a simple Node.js script to add the operationId field to the EDP swagger JSON file. To install and use the script, please follow these steps.
+In the above text, the **operationId** of the get operation of the **/authorize** path is **GetAuthorize**. Instead of manually adding the operationId field, we have implemented a simple Node.js script to add the operationId field to the EDP swagger JSON file. 
+
+
+To install and use the script, please follow these steps.
 
 1) **Clone the project from GitHub**
+
+The following Git command clones the project repository into a new directory. The Git command can be downloaded from [the Git download website](https://git-scm.com/downloads).
 
 ```
 git clone https://github.com/TR-API-Samples/Article.EDP.REST.AutoRest
@@ -44,7 +49,10 @@ Then, change the directory to **Article.EDP.REST.AutoRest**
 
 2) **Build the project**
 
-The script depends on the **command-line-args** and **command-line-usage** library. Run the following command to download the dependencies.
+Node.js is required when building the project. It can be download from [the Node.js website](https://nodejs.org/en/)
+
+After installing Node.js, run the following command to download the script's dependencies which are **command-line-args** and **command-line-usage** libraries.
+
 ```
 npm install
 ```
@@ -102,6 +110,8 @@ The AutoRest's options used in this section are:
 |--csharp|Runs the C# code generator|
 |--java|Runs the Java code generator|
 |--python|Runs the python code generator|
+
+To install AutoRest, please refer to the [AutoRest website](https://github.com/Azure/autorest). 
 
 ### C#
 
