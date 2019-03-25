@@ -49,7 +49,7 @@ Then, change the directory to **Article.EDP.REST.AutoRest**
 
 2) **Build the project**
 
-Node.js is required when building the project. It can be download from [the Node.js website](https://nodejs.org/en/)
+Node.js is required when building the project. It can be downloaded from [the Node.js website](https://nodejs.org/en/)
 
 After installing Node.js, run the following command to download the script's dependencies which are **command-line-args** and **command-line-usage** libraries.
 
