@@ -59,6 +59,55 @@ function addSchemes(jsonObject) {
     console.log("Set schemes to " + schemes);
     jsonObject.schemes = schemes;
 }
+function handleObjectType(jsonObject) {
+  
+    var properties = jsonObject.properties;
+
+    for (var property in properties) {
+        if (typeof jsonObject.properties[property].type == "object") {
+            jsonObject.properties[property].type = "string";
+        }
+        switch (jsonObject.properties[property].type) {
+            case "object":
+                handleObjectType(jsonObject.properties[property]);
+                break;
+            case "array":
+                handleArrayType(jsonObject.properties[property]);
+                break;
+            default:
+        }
+    }
+}
+function handleArrayType(jsonObject) {           
+    if (typeof jsonObject.items.type == "object") {   
+        jsonObject.items.type= "string";
+    }
+    switch (jsonObject.items.type) {
+        case "object":
+            handleObjectType(jsonObject.items);
+            break;
+        case "array":
+            handleArrayType(jsonObject.items);
+            break;
+        default:
+    }    
+}
+function changeTypeArrayToString(jsonObject) {
+    var definitions = jsonObject.definitions;
+    for (var definition in definitions) {       
+        var type = jsonObject.definitions[definition].type;        
+        switch (type) {
+            case "object":
+                handleObjectType(jsonObject.definitions[definition]);
+                break;
+            case "array":
+                handleArrayType(jsonObject.definitions[definition]);
+                break;
+            default:
+
+        }
+    }
+}
 function addOperationId(jsonObject) {
 
     var jsonPath = jsonObject.paths;
@@ -117,7 +166,7 @@ if (valid) {
     addOperationId(jsonContent);
     addHost(jsonContent);
     addSchemes(jsonContent);
-
+    changeTypeArrayToString(jsonContent);
   
     fs.writeFile(options.output, JSON.stringify(jsonContent, null, 2), function (err) {
         if (err) {
@@ -131,4 +180,8 @@ if (valid) {
 } else {
     console.log(usage)
 }
+
+
+//console.log("\n *START* \n");
+//var content = fs.readFileSync("alerts_v1.json");
 
