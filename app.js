@@ -182,6 +182,5 @@ if (valid) {
 }
 
 
-//console.log("\n *START* \n");
-//var content = fs.readFileSync("alerts_v1.json");
+
 
