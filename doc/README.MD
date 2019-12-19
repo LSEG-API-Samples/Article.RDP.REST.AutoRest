@@ -15,14 +15,14 @@ AutoRest is an OpenAPI (Swagger) specification code generator. It is an open sou
 AutoRest is a Node.js console application. To install AutoRest, please refer to the [AutoRest website](https://github.com/Azure/autorest). 
 
 ## OperationId
-AutoRest supports both swagger JSON and YAML files and the EDP website can provide swagger files in JSON format. However, if you use these JSON files with AutoRest, it may show the following errors.
+AutoRest supports both swagger JSON and YAML files and the RDP website can provide swagger files in JSON format. However, if you use these JSON files with AutoRest, it may show the following errors.
 
 ```
 FATAL: OperationId is required for all operations. Please add it for 'get' operation of '/authorize' path.
 FATAL: AutoRest.Core.Logging.CodeGenerationException: OperationId is required for all operations. Please add it for 'get' operation of '/authorize' path.
 ``` 
 
-AutoRest uses operationId to determine the method name for a given API but the swagger files from EDP may not have this field. Refer to the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md), the operationId is a field under an operation object. It is a unique string used to identify the operation. The id MUST be unique among all operations described in the API. The operationId can be manually added to the swagger JSON file under the operation object, as shown below.
+AutoRest uses operationId to determine the method name for a given API but the swagger files from RDP may not have this field. Refer to the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md), the operationId is a field under an operation object. It is a unique string used to identify the operation. The id MUST be unique among all operations described in the API. The operationId can be manually added to the swagger JSON file under the operation object, as shown below.
 
 ```
    "paths": {
@@ -43,9 +43,9 @@ To install and use the script, please follow these steps.
 The following Git command clones the project repository into a new directory. The Git command can be downloaded from [the Git download website](https://git-scm.com/downloads).
 
 ```
-git clone https://github.com/TR-API-Samples/Article.EDP.REST.AutoRest
+git clone https://github.com/Refinitiv-API-Samples/Article.RDP.REST.AutoRest
 ```
-Then, change the directory to **Article.EDP.REST.AutoRest**
+Then, change the directory to **Article.RDP.REST.AutoRest**
 
 2) **Build the project**
 
@@ -63,7 +63,7 @@ The script accepts the following two parameters.
 
 |Parameter Name|Type|Description|
 |--------------|----|-----------|
-|--input|String|The input JSON file downloaded from the EDP website|
+|--input|String|The input JSON file downloaded from the RDP website|
 |--output|String|The output JSON file after adding the operationId field|
 
 Moreover, the script also adds the host and schemes fields.
