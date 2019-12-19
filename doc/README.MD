@@ -1,11 +1,11 @@
-# How to use AutoRest with EDP
+# How to use AutoRest with RDP
 
-## EDP Overview
-Elektron Data Platform (EDP) is our cloud-enabled, open platform, that brings together content, analytics and proprietary, customer and third-party data distribution and management technology. It provides simple web-based API access to a broad range of content. Therefore, any programming languages which support web-based API can connect and consume data from EDP.
+## RDP Overview
+Refinitiv Data Platform (RDP) is our cloud-enabled, open platform, that brings together content, analytics and proprietary, customer and third-party data distribution and management technology. It provides simple web-based API access to a broad range of content. Therefore, any programming languages which support web-based API can connect and consume data from RDP.
 
-EDP provides online documents which list all available APIs and demonstrates how to use those APIs. Moreover, developers can also download a swagger file for each API. With this file, we can use tools such as AutoRest, or NSwagStudio to generate client libraries for accessing RESTful web services.
+RDP provides online documents which list all available APIs and demonstrates how to use those APIs. Moreover, developers can also download a swagger file for each API. With this file, we can use tools such as AutoRest, or NSwagStudio to generate client libraries for accessing RESTful web services.
 
-This article demonstrates how to use AutoRest to generate client libraries for EDP services.
+This article demonstrates how to use AutoRest to generate client libraries for RDP services.
 
 
 ## AutoRest Overview
@@ -33,7 +33,7 @@ AutoRest uses operationId to determine the method name for a given API but the s
                 "summary": "Used to get a token for implicit grant.",
 ...
 ```
-In the above text, the **operationId** of the get operation of the **/authorize** path is **GetAuthorize**. Instead of manually adding the operationId field, we have implemented a simple Node.js script to add the operationId field to the EDP swagger JSON file. 
+In the above text, the **operationId** of the get operation of the **/authorize** path is **GetAuthorize**. Instead of manually adding the operationId field, we have implemented a simple Node.js script to add the operationId field to the RDP swagger JSON file. 
 
 
 To install and use the script, please follow these steps.
@@ -81,7 +81,7 @@ The script will create a modified JSON file. It contains the added **operationId
 
 This section explains how to use the modified JSON file from the previous step with AutoRest to generate client libraries for C#, Java, and Python. It also shows how to use the generated C#, Java, and Python classes to get an access token for password grant.
 
-The examples use the swagger **/auth/oauth2/beta1** JSON file downloaded from the Elektron Data Platform's website. 
+The examples use the swagger **/auth/oauth2/beta1** JSON file downloaded from the Refinitiv Data Platform's website. 
 
 1) Go to [https://api.refinitiv.com/](https://api.refinitiv.com/) and find the **/auth/oauth2/beta1** service. Then, select the **token** path
 
@@ -127,11 +127,11 @@ The class diagram for the generated classes is shown below.
 
 ![CSharp](CSharpClass.jpg)
 
-The main class is **EDSAuthentication** which provides several methods to access EDP services. Developers can call methods with the **WithHttpMessagesAsync** suffix to get the low-level **HttpOperationResponse** object containing the HTTP response body and response headers. Otherwise, the extension methods, such as **GetAuthorize**, **PostRevoke**, and **PostToken**, can be used to get the object level response. The model classes are also generated for the response (**Tokenresponse**) and error (**Error**).
+The main class is **EDSAuthentication** which provides several methods to access RDP services. Developers can call methods with the **WithHttpMessagesAsync** suffix to get the low-level **HttpOperationResponse** object containing the HTTP response body and response headers. Otherwise, the extension methods, such as **GetAuthorize**, **PostRevoke**, and **PostToken**, can be used to get the object level response. The model classes are also generated for the response (**Tokenresponse**) and error (**Error**).
 
 The generated C# classes depend on **Microsoft.Rest.ClientRuntime** and **Newtonsoft.Json** so those libraries must be installed in the project. 
 
-The following code shows how to use **EDSAuthentication** to perform EDP authentication.
+The following code shows how to use **EDSAuthentication** to perform RDP authentication.
 
 ```CSharp
 using edp.auth;
@@ -251,7 +251,7 @@ import retrofit2.http.FormUrlEncoded;
     }
 ```
 
-After modifying the code, we can use the **EDSAuthenticationImpl** class to perform EDP authentication, as shown below.
+After modifying the code, we can use the **EDSAuthenticationImpl** class to perform RDP authentication, as shown below.
 
 ```Java
     public static void main( String[] args )
@@ -292,7 +292,7 @@ The class diagram for the generated classes is shown below.
 
 ![Python](PythonClass.jpg)
 
-The main class is **EDSAuthentication** which provides several methods to access EDP services. The model classes are also generated for the response (**Tokenresponse**) and error (**Error**).
+The main class is **EDSAuthentication** which provides several methods to access RDP services. The model classes are also generated for the response (**Tokenresponse**) and error (**Error**).
 
 The client library depends on the **AutoRest Python Client Runtime**. Developers can use the following command to install this library.
 
@@ -300,7 +300,7 @@ The client library depends on the **AutoRest Python Client Runtime**. Developers
 pip install msrest
 ```
 
-The following code shows how to use **EDSAuthentication** with Python to perform EDP authentication.
+The following code shows how to use **EDSAuthentication** with Python to perform RDP authentication.
 
 ```Python
 import edp.auth as auth
@@ -345,9 +345,9 @@ The above code calls the **post_token** method with a username and password to g
 > The generated Java code doesn't support the request message with the **'application/x-www-form-urlencoded'** content type. The generated code must be modified to support this content type. For more information, please refer the **AutoRest Usage/Java** section.
 
 ## Summary
-This article introduces how to use AutoRest to generate client libraries for Elektron Data Platform services. Using AutoRest can save developers time; Developers don't need to implement its own classes to consume REST services from Elektron Data Platform. 
+This article introduces how to use AutoRest to generate client libraries for Refinitiv Data Platform services. Using AutoRest can save developers time; Developers don't need to implement its own classes to consume REST services from Refinitiv Data Platform. 
 
-The steps are summarized here. First, download the swagger JSON file from the Elektron Data Platform's website. Then, run the node.js script with the downloaded file to create a new JSON file with the **operationId** fields. AutoRest uses the **operationId** fields as method names for generated classes. After that, run the AutoRest command with the modified JSON file to generate the client library. Next, install dependencies for the client library. Then, construct a class, and call an appropriate method. Finally, a returned object may need to be casted according to its type.
+The steps are summarized here. First, download the swagger JSON file from the Refinitiv Data Platform's website. Then, run the node.js script with the downloaded file to create a new JSON file with the **operationId** fields. AutoRest uses the **operationId** fields as method names for generated classes. After that, run the AutoRest command with the modified JSON file to generate the client library. Next, install dependencies for the client library. Then, construct a class, and call an appropriate method. Finally, a returned object may need to be casted according to its type.
 
 
 
